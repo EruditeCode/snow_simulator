@@ -1,6 +1,5 @@
 # A snowflake class to support the snow simulator program.
 
-import pygame
 from random import randint
 
 class Snowflake:
@@ -10,10 +9,12 @@ class Snowflake:
 		self.gravity = gravity
 		self.RADIUS_MAX = radius
 		self.radius_change = True
+		self.color = (255, 255, 255)
 
 	def controller(self, height, width):
 		self.update_pos(height, width)
 		self.update_rad()
+		self.update_color(height)
 
 	def update_pos(self, height, width):
 		if self.pos[1] < height + self.radius:
@@ -28,12 +29,9 @@ class Snowflake:
 		else:
 			self.radius_change = True
 
+	def update_color(self, height):
+		rgb = 250 - 100 * (self.pos[1] / height) 
+		self.color = (rgb, rgb, rgb)
+
 	def respawn(self, width):
 	 	self.pos = (randint(0, width), -1 * self.radius)
-
-	def draw(self, screen, height):
-		rgb = 250 - 100 * (self.pos[1] / height) 
-		color = (rgb, rgb, rgb)
-		pygame.draw.circle(screen, color, self.pos, self.radius)
-
-
