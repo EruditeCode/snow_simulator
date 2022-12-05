@@ -21,7 +21,9 @@ class Snowflake:
 	def respawn(self, width):
 	 	self.pos = (randint(0, width), -1 * self.radius)
 
-	def draw(self, screen):
-		pygame.draw.circle(screen, (250, 250, 250), self.pos, self.radius)
+	def draw(self, screen, height):
+		rgb = 250 - 100 * (self.pos[1] / height) 
+		color = (rgb, rgb, rgb)
+		pygame.draw.circle(screen, color, self.pos, self.radius)
 
 
