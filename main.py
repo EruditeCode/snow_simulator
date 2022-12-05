@@ -35,7 +35,7 @@ def main():
 		
 		# Draw the snowflakes.
 		for snowflake in snowflakes:
-			snowflake.draw(screen)
+			snowflake.draw(screen, HEIGHT)
 			snowflake.controller(HEIGHT, WIDTH)
 
 		screen.blit(trees_front, (0, 0))	
