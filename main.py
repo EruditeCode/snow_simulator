@@ -21,7 +21,8 @@ def main():
 	snowflakes = []
 	for i in range(0, 500):
 		position = (randint(0, WIDTH), randint(0, HEIGHT))
-		snowflakes.append(Snowflake(position, 3, 1))
+		gravity = randint(1, 2)
+		snowflakes.append(Snowflake(position, 3, gravity))
 
 	while True:
 		for event in pygame.event.get():
